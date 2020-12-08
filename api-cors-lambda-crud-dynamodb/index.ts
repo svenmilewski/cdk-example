@@ -19,25 +19,11 @@ export class ApiLambdaCrudDynamoDBStack extends cdk.Stack {
       removalPolicy: cdk.RemovalPolicy.DESTROY, // NOT recommended for production code
     });
 
-    const getOneLambda = crudLambda(this, 'getOneItemFunction', dynamoTable, {
-      handler: 'get-one.handler'
-    });
-
-    const getAllLambda = crudLambda(this, 'getAllItemsFunction', dynamoTable, {
-      handler: 'get-all.handler',
-    });
-
-    const createOne = crudLambda(this, 'createItemFunction', dynamoTable, {
-      handler: 'create.handler',
-    });
-
-    const updateOne = crudLambda(this, 'updateItemFunction', dynamoTable, {
-      handler: 'update-one.handler',
-    });
-
-    const deleteOne = crudLambda(this, 'deleteItemFunction', dynamoTable, {
-      handler: 'delete-one.handler',
-    });
+    const getOneLambda = crudLambda(this, 'getOneItemFunction', 'get-one', dynamoTable);
+    const getAllLambda = crudLambda(this, 'getAllItemsFunction', 'get-all', dynamoTable);
+    const createOne = crudLambda(this, 'createItemFunction', 'create', dynamoTable);
+    const updateOne = crudLambda(this, 'updateItemFunction', 'update-one', dynamoTable);
+    const deleteOne = crudLambda(this, 'deleteItemFunction', 'delete-one', dynamoTable);
 
     const api = new apigateway.RestApi(this, 'itemsApi', {
       restApiName: 'Items Service'

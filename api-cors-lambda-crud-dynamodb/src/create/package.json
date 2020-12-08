@@ -1,0 +1,11 @@
+{
+  "name": "create",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm install && tsc"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.64",
+    "aws-sdk": "2.712.0"
+  }
+}
